@@ -10,7 +10,7 @@ endfunction
 
 function! chit#SetTheme(theme_name)
   " Run in background so we don't see the output
-  silent execute '!chit set-theme ' . a:theme_name . ' &'
+  let out = system('chit set-theme ' . a:theme_name)
   call chit#Setup()
 endfunction
 
