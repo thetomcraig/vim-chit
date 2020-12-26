@@ -7,7 +7,14 @@ function! chit#Setup()
   execute 'colorscheme ' . CHIT_VIM_COLORSCHEME
 endfunction
 
+
 function! chit#SetTheme(theme_name)
-  silent execute "!chit set-theme" . a:theme_name
+  " Run in background so we don't see the output
+  silent execute '!chit set-theme ' . a:theme_name . ' &'
   call chit#Setup()
+endfunction
+
+
+function! chit#ThemeComplete(base, ...) abort
+  return split(system('chit list-themes'))
 endfunction
